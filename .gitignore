@@ -1,3 +1,14 @@
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
