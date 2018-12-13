@@ -1,15 +1,9 @@
 import mysql.connector
 
 config = {
-    # 'host': "192.168.1.121",
-    # 'user':"hongfeng.huang",
-    # 'passwd':"741852@hhf",
-    # 'port': 3306,
-    # 'database': 't8t_scm_mdm',
-    # 'charset': 'utf8'
     'host': "192.168.1.121",
-    'user':"root",
-    'passwd':"tudouwang",
+    'user':"hongfeng.huang",
+    'passwd':"741852@hhf",
     'port': 3306,
     'database': 't8t_scm_mdm',
     'charset': 'utf8'
@@ -93,8 +87,8 @@ class MDMMySql:
         cursor.close()
         return count
 
-    def __get_shop_ids(self):
-        return str(MAIN_SHOP['shopId']) + "," + str(DIRECT_BRANCH_SHOP['shopId']) + "," + str(PARTNER_BRANCH_SHOP['shopId'])
+    # def __get_shop_ids(self):
+    #     return str(MAIN_SHOP['shopId']) + "," + str(DIRECT_BRANCH_SHOP['shopId']) + "," + str(PARTNER_BRANCH_SHOP['shopId'])
 
 #test
 if __name__ == "__main__":
