@@ -1,0 +1,207 @@
+{
+  "code": 200,
+  "data": [
+    {
+      "devid": 393,
+      "devname": "\u65e0\u7ebf\u63d2\u5ea7\u4e0b2",
+      "sn": "lumi.plug",
+      "gid": 0,
+      "uid": 0,
+      "status": -1,
+      "online": 0,
+      "hide": 0
+    },
+    {
+      "devid": 387,
+      "devname": "\u571f\u5df4\u5154\u667a\u80fd\u7f51\u5173",
+      "sn": "Tu8tu_Gateway_0001",
+      "gid": 0,
+      "uid": 7288144,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 352,
+      "devname": "\u571f\u5df4\u5154\u667a\u80fd\u7f51\u5173",
+      "sn": "Tu8tu_Gateway_0001",
+      "gid": 159,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 351,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 159,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 327,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 226,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 305,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 127,
+      "uid": 7281884,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 304,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 129,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 248,
+      "devname": "zigbee\u7f51\u5173",
+      "sn": "Tu8tu_Gateway_0001",
+      "gid": 246,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 247,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 246,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 238,
+      "devname": "zigbee\u7f51\u5173",
+      "sn": "Tu8tu_Gateway_0001",
+      "gid": 123,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 237,
+      "devname": "\u571f\u5df4\u5154\u667a\u80fd\u7f51\u5173",
+      "sn": "Tu8tu_Gateway_0001",
+      "gid": 264,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 236,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 264,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 235,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 123,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 228,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 0,
+      "uid": 0,
+      "status": -1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 220,
+      "devname": "\u571f\u5df4\u5154\u667a\u80fd\u7f51\u5173",
+      "sn": "Tu8tu_Gateway_0001",
+      "gid": 94,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 219,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 121,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 203,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 239,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 187,
+      "devname": "\u6444\u50cf\u673a1",
+      "sn": "Ys_camera_C2c",
+      "gid": 0,
+      "uid": 0,
+      "status": -1,
+      "online": 1,
+      "hide": 0
+    },
+    {
+      "devid": 171,
+      "devname": "zigbee\u7f51\u5173",
+      "sn": "Tu8tu_Gateway_0001",
+      "gid": 128,
+      "uid": 1897535,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    },
+    {
+      "devid": 170,
+      "devname": "\u571f\u5df4\u5154MCU",
+      "sn": "Tu8tu_MCU_0001",
+      "gid": 128,
+      "uid": 0,
+      "status": 1,
+      "online": 0,
+      "hide": 1
+    }
+  ],
+  "count": 2876,
+  "totalPage": 144
+}

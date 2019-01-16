@@ -1,0 +1,187 @@
+{
+  'lumi.plug': {
+    'devname': '插座',
+    'sum_online': 7,
+    'sum': 75
+  },
+  'lumi.ctrl_ln1.aq1': {
+    'devname': '主卧灯',
+    'sum_online': 12,
+    'sum': 44
+  },
+  'gowild_robot_ap': {
+    'devname': '小白机器人',
+    'sum_online': 25,
+    'sum': 25
+  },
+  'LH05121': {
+    'devname': '烟雾探测器',
+    'sum_online': 24,
+    'sum': 87
+  },
+  'Ys_camera_C6H': {
+    'devname': '萤石摄像机C6H',
+    'sum_online': 81,
+    'sum': 81
+  },
+  'lumi.ctrl_ln2.aq1': {
+    'devname': '灯',
+    'sum_online': 88,
+    'sum': 306
+  },
+  'Tu8tu_Gateway_0001': {
+    'devname': 'zigbee网关模块',
+    'sum_online': 71,
+    'sum': 668
+  },
+  'Tu8tu_MCU_0001': {
+    'devname': '土巴兔MCU',
+    'sum_online': 31,
+    'sum': 497
+  },
+  'lumi.curtain': {
+    'devname': '窗帘',
+    'sum_online': 35,
+    'sum': 158
+  },
+  'Tu8tu_Router_0003': {
+    'devname': '土巴兔智慧家分布式面板',
+    'sum_online': 34,
+    'sum': 138
+  },
+  'Tu8tu_MCU_0003': {
+    'devname': '土巴兔MCU802',
+    'sum_online': 34,
+    'sum': 139
+  },
+  'LH02121': {
+    'devname': '人体移动传感器',
+    'sum_online': 29,
+    'sum': 83
+  },
+  'lumi.ctrl_ln2': {
+    'devname': '灯032',
+    'sum_online': 8,
+    'sum': 113
+  },
+  'Tu8tu_Router_0004': {
+    'devname': '土巴兔智慧家分布式面板PLUS',
+    'sum_online': 0,
+    'sum': 6
+  },
+  'Tu8tu_MCU_0004': {
+    'devname': '土巴兔MCU802PLUS',
+    'sum_online': 0,
+    'sum': 6
+  },
+  'Tu8tu_Router_0002': {
+    'devname': '土巴兔智慧家千兆网络系统',
+    'sum_online': 14,
+    'sum': 79
+  },
+  'Tu8tu_MCU_0002': {
+    'devname': '土巴兔MCU801',
+    'sum_online': 14,
+    'sum': 79
+  },
+  'haier.air_cleaner.F300': {
+    'devname': '海尔空气净化器',
+    'sum_online': 2,
+    'sum': 3
+  },
+  'LH04121': {
+    'devname': '燃气探测器',
+    'sum_online': 14,
+    'sum': 62
+  },
+  'lumi.ctrl_neutral2': {
+    'devname': '灯',
+    'sum_online': 2,
+    'sum': 11
+  },
+  'LH03121': {
+    'devname': '门窗传感器',
+    'sum_online': 10,
+    'sum': 69
+  },
+  'lumi.sensor_86sw1': {
+    'devname': '开关',
+    'sum_online': 0,
+    'sum': 2
+  },
+  'lumi.ctrl_86plug.aq1': {
+    'devname': '插座',
+    'sum_online': 7,
+    'sum': 53
+  },
+  'lumi.sensor_motion': {
+    'devname': '',
+    'sum_online': 0,
+    'sum': 3
+  },
+  'lumi.ctrl_neutral1': {
+    'devname': '灯',
+    'sum_online': 0,
+    'sum': 8
+  },
+  'LH07321': {
+    'devname': '水浸探测器',
+    'sum_online': 5,
+    'sum': 41
+  },
+  'lumi.sensor_86sw2': {
+    'devname': '无线开关2六级',
+    'sum_online': 0,
+    'sum': 6
+  },
+  'lumi.ctrl_ln1': {
+    'devname': '灯',
+    'sum_online': 0,
+    'sum': 12
+  },
+  'haier.water_cleaner.HRO1008-5E': {
+    'devname': '净水器',
+    'sum_online': 2,
+    'sum': 4
+  },
+  'haier.air_condition': {
+    'devname': '空调',
+    'sum_online': 0,
+    'sum': 3
+  },
+  'Lecheng_camera_TP1': {
+    'devname': '乐橙摄像机TP1',
+    'sum_online': 2,
+    'sum': 2
+  },
+  'lumi.sensor_magnet': {
+    'devname': 'Aqara门窗传感器',
+    'sum_online': 1,
+    'sum': 3
+  },
+  'lumi.sensor_switch': {
+    'devname': 'Aqara圆形开关',
+    'sum_online': 0,
+    'sum': 1
+  },
+  'haier.water_heater.ES60H-S7': {
+    'devname': '海尔电热水器',
+    'sum_online': 2,
+    'sum': 5
+  },
+  'Ys_camera_C6': {
+    'devname': '摄像机',
+    'sum_online': 1,
+    'sum': 1
+  },
+  'lumi.sensor_ht': {
+    'devname': 'test温湿度传感器啊啦啦啦啦啦啦',
+    'sum_online': 0,
+    'sum': 2
+  },
+  'Ys_camera_C2c': {
+    'devname': '摄像机1',
+    'sum_online': 1,
+    'sum': 1
+  }
+}
