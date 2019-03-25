@@ -41,23 +41,37 @@ if __name__ == "__main__":
     #     f.write(res)
     #     time.sleep(0.01)
 
-    sumMap = {}
-    for page in range(total)[1:]:
-        fileName = "idc_device_" + str(page) + ".json"
-        f = open(fileName, 'r', encoding='unicode-escape')
-        strData = f.read()
-        jsonData = json.loads(strData)
-        total = jsonData['totalPage']
-        for device in jsonData['data']:
-            if sumMap.get(device['sn']) is None:
-                sumMap[device['sn']] = {'devname': device['devname'], "sum_online": 0, "sum": 0}
-
-            tmp = sumMap[device['sn']]
-            tmp['sum'] += 1
-            if device['online'] == 1:
-                tmp['sum_online'] += 1
-
-        f.close()
-    f = open("sum_device.json", 'w')
-    f.write(str(sumMap))
+    # sumMap = {}
+    # for page in range(total)[1:]:
+    #     fileName = "idc_device_" + str(page) + ".json"
+    #     f = open(fileName, 'r', encoding='unicode-escape')
+    #     strData = f.read()
+    #     jsonData = json.loads(strData)
+    #     total = jsonData['totalPage']
+    #     for device in jsonData['data']:
+    #         if sumMap.get(device['sn']) is None:
+    #             sumMap[device['sn']] = {'devname': device['devname'], "sum_online": 0, "sum": 0}
+    #
+    #         tmp = sumMap[device['sn']]
+    #         tmp['sum'] += 1
+    #         if device['online'] == 1:
+    #             tmp['sum_online'] += 1
+    #
+    #     f.close()
+    # f = open("sum_device.json", 'w')
+    # f.write(str(sumMap))
+    # f.close()
+    f = open("sum_device.json", 'r',  encoding='gbk')
+    f_read = f.read()
+    jsonData = json.loads(f_read)
     f.close()
+    import csv
+
+    with open('sum_device.csv', 'w', newline='') as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        for key in jsonData.keys():
+            # for kkey in jsonData.get(key):
+            spamwriter.writerow(jsonData.get(key))
+
+
+    # f.close()
