@@ -1,6 +1,9 @@
 #
 # 这个是一个mysql的工具类，用于搜索指定的数据库下（配置为：databases_config) 所有表字段、备注中包含的指定的字段  (当前为：yid，project_id， 项目id，项目ID）
 #
+import csv
+import json
+
 import mysql.connector
 import datetime
 
@@ -16,7 +19,8 @@ config = {
 }
 
 # 需要查询的数据库表
-databases_config = ["t8t_scm_fhc", "dsp_ps_gdm", "t8t_scm_mdm", "t8t_scm_rem"]
+databases_config = ["t8t_scm_mdm", "t8t_scm_ldm", "t8t_scm_sup", "t8t_scm_mrp", "t8t_scm_rem", "t8t_ps_odm",
+                    "t8t_scm_oos", "dsp_ps_gdm", "t8t_scm_pda", "t8t_scm_exh", "t8t_scm_pom", "t8t_scm_fhc"]
 
 
 class MyDBsDDLUtils:
@@ -74,7 +78,8 @@ class MyDBsDDLUtils:
 
     def getAllPathFields(self, myDatabase: str):
         if self.showLog:
-            print("====================================================================================================")
+            print(
+                "====================================================================================================")
             print("database", myDatabase)
         self.connect(myDatabase)
         tables = self.showAllTablesInDB()
@@ -84,13 +89,27 @@ class MyDBsDDLUtils:
             for field in fields:
                 if field[0] == "yid" or field[0] == "project_id" \
                         or field[8].__contains__("项目id") or field[8].__contains__("项目ID"):
-                    tableAndFields.append(myDatabase + "." + table[0] + "." + field[0])
+                    fullPathField = myDatabase + "." + table[0] + "." + field[0]
+                    fieldsJson = {
+                        "fullPathField": fullPathField,
+                        "Field": field[0],
+                        "Type": field[1],
+                        "Comment": field[8]
+                    }
+                    tableAndFields.append(fieldsJson)
         if self.showLog:
             print("tableAndFields", tableAndFields)
-            print("====================================================================================================")
+            print(
+                "====================================================================================================")
         self.close()
         return tableAndFields
 
+    def exportToExcel(self, result: list):
+        with open("mydbsDDL_export.csv", "w", newline="") as csvFile:
+            fieldnames = ["fullPathField", "Field", "Type", "Comment"]
+            writer = csv.DictWriter(csvFile, fieldnames)
+            writer.writeheader()
+            writer.writerows(result)
 
 # test
 if __name__ == "__main__":
@@ -98,6 +117,7 @@ if __name__ == "__main__":
     test = MyDBsDDLUtils()
     for database in databases_config:
         result += test.getAllPathFields(database)
+        test.exportToExcel(result)
     print("=========================Full Path About Field: yid, project_id=========================")
     print("full path", result)
     print("====================================================================================================")

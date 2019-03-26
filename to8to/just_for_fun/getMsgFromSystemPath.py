@@ -47,8 +47,6 @@ def saveJsonObjectToExcel(jsonObjects: list):
         writer = csv.DictWriter(csvFile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(jsonObjects)
-    pass
-
 
 if __name__ == "__main__":
     # 获取指定目录下的所有文件
