@@ -31,6 +31,17 @@ POI工具用于文档提取应用，如：网页爬虫，索引构建，系统�
 使用Java读写.xls格式的Excel表格使用HSSF，读写.xlsx格式Excel表格使用XSSF，SS就可以同时处理两种格式的Excel表格。
 另外，大量数据的导出使用优化过的SXSSF。
 
+## 测试环境
+>操作系统：windows 10 专业版
+>
+>处理器：Intel Core(TM) i5-4200M CPU @2.5GHz 
+>
+>内存：12G
+>
+> JVM: Java HotSpot(TM) 64-Bit Server VM (25.72-b15, mixed mode)
+>
+>Java: 版本 1.8.0_72, 供应商 Oracle Corporation
+
 ## 测试代码
 ```` java
 package my.poi;
@@ -125,10 +136,28 @@ public class SXSSF {
         return workbook;
     }
 }
-
 ````
+### 执行结果：
+
+各生成一个Excel文件：每个文件8个页签，每个页签5000行，500列
+
+| SXSSF                                    | XSSF                                     |
+| ---------------------------------------- | ---------------------------------------- |
+| 大小：1,198,522,368 个字节                     | 大小：3,165,650,944 个字节                     |
+| 已使用：434,768,696 个字节                      | 已使用：2,687,171,360 个字节                    |
+| 最大：3,193,962,496 个字节                     | 最大：3,193,962,496 个字节                     |
+| 执行时间：2min                                | 执行时间：2h+，（没等到，要先睡了）                      |
+| 生成文件大小：98.7 MB (103,504,645 字节)          | 预计一样大(还没有生成过)                            |
+| 类：1,345    实例：10,322,964    字节：422,870,624 | 类：943    实例：52,630,412    字节：2,687,336,880 |
+
+### 结果分析：
+
+由此可以得出，在Excel导出的时候使用XSSF会因为对象都保存在内存中，数据越大所需内存越积越多，超过限制最终导致OOM，而使用SXSSF是持久化到硬盘上，对象占用内存到了上限，再增加对表格对象不会再占用内存资源，所以可以避免OOM导致的宕机。
+
+## 附：
+
 Maven依赖的jar包
-```xml
+``` xml
   <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -160,7 +189,10 @@ Maven依赖的jar包
             <version>3.11</version>
         </dependency>
 ```
-
+![XSSF实例图](XSSF实例图.png)
+![XSSF监控图](XSSF监控图.png)
+![SXSSF实例图](SXSSF实例图.png)
+![SXSSF监控图](SXSSF监控图.png)
 
 
 
