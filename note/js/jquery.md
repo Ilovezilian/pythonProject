@@ -401,20 +401,301 @@ h1.toggleClass( "big" );
 if ( h1.hasClass( "big" ) ) {
     ...
 }
+
+// Basic dimensions methods.
+// Sets the width of all <h1> elements.
+$( "h1" ).width( "50px" );
+// Gets the width of the fist <h1> element.
+$( "h1" ).width();
+//Sets the height of all <h1> elements.
+$( "h1" ).height( "50px" );
+// Gets the height of the first <h1> element.
+$( "h1" ).height();
+
+// Returns an object containing position information ofr the first <h1> relative to its "offset (positioned) parent".
+$( "h1" ).position();
 ```
 ## Data Methods
+```js 
+// Storing and retrieving data related to an element.
+$( "#myDiv" ).data( "keyName", { foo: "bar" } );
+$( "#myDiv" ).data( "keyName" ); // Returns { foo: "bar" }
+
+// Storing a relationship between elements using .data()
+$( "#myList li" ).each(function() {
+    var li = $( this );
+    var div = li.find( "div.content" );
+    li.data( "contentDiv", div );
+});
+
+// Later, we don't have to find the div again;
+// we can just read it from the list item's data
+var firstLi = $( "#myList li:first" );
+firstLi.data( "contentDiv" ).html( "new content" );
+```
+
 ## Utility Methods
+* $.clearQueue()
+* $.dequeue()
+* $.boxModel
+* $.browser
+* $.contains()
+* $.data()
+* $.dequeue()
+* $.each()
+* $.extend()
+* $.fn.extend()
+* $.globalEval()
+* $.grep()
+* $.inArray()
+* $.isArray()
+* $.isEmptyObject()
+* $.isFunction()
+* $.isNumeric()
+* $.isPlainObject()
+* $.isWindow()
+* $.isXMLDoc()
+* $.makeArray()
+* $.map()
+* $.merge()
+* $.noop()
+* $.now()
+* $.parseHTML()
+* $.parseJSON()
+* $.parseXML()
+* $.proxy()
+* $.queue()
+* $.removeData()
+* $.support
+* $.trim()
+* $.type()
+* $.unique()
+* $.uniqueSort()
+* $ queue()
+
 ## Iterating over jQuery and non-jQuery Objects
+$.each()
+```js 
+var sum = 0;
+var arr = [1,2,3,4,5];
+for (var i = 0; l = arr.length; i < l; i ++ ) {
+    sum += arr[ i ];
+}
+cosole.log( sum ); // 15 
+
+$.each( arr, function( index, value ) {
+    sum += value;
+});
+
+console.log( sum ); // 15
+
+var sum = 0;
+var obj = {
+    foo: 1,
+    bar: 2
+}
+for (var item in obj) {
+    su += obj[ item ];
+}
+console.log( sum ); // 3
+
+$.each( obj, function( key, value ) {
+    sum += value;
+});
+console.log( sum ); // 3
+
+```
+
+.each
+```html
+<ul>
+    <li><a href="#">Link 1</a></li>
+    <li><a href="#">Link 2</a></li>
+    <li><a href="#">Link 3</a></li>
+</ul>
+```
+```js 
+$( "li" ).each( function( index, element ) {
+    console.log( $( this ).text() );
+// Logs the following: Link 1; Link2; Link 3;
+
+$( "li" ).each( function( index, listItem ) {
+ 
+    this === listItem; // true
+ 
+    // For example only. You probably shouldn't call $.ajax() in a loop.
+    $.ajax({
+        success: function( data ) {
+            // The context has changed.
+            // The "this" keyword no longer refers to listItem.
+            this !== listItem; // true
+        }
+    });
+ 
+});
+
+```
+$.map()
+```js 
+var newArr =[];
+$( "li" ).each( function() {
+    newArr.push( this.id );
+});
+// return JavaScript array
+$( "li" ).map( function( index, element) {
+    return this.id;
+}).get();
+
+```
+.map()
+```js 
+<li id="a"></li>
+<li id="b"></li>
+<li id="c"></li>
+
+<script>
+var arr = [{
+    id: "a",
+    tagName: "li"
+},{
+    id:"b",
+    tagName:"li"
+},{
+    id:"c",
+    tagName:"li"
+}];
+
+// Returns [ "a","b","c"]
+$( "li" ).map( function( index, element ) {
+    return element.id;
+}).get();
+
+// also returns [ "a", "b", "c" ]
+// Note that the value comes first with $.map
+$.map( arr, function( value, index ) {
+    return value.id;
+});
+</script>
+```
+
 ## Using jQuery’s .index() Function
+.index() gives the zero-based index of jQuery object within its parent.
+```html
+<ul>
+    <div></div>
+    <li id="foo1">foo</li>
+    <li id="bar1">bar</li>
+    <li id="bazl">baz</li>
+    <div></div>
+</ul>
+```
+```js 
+var foo = $( "#foo1" );
+console.log( "Index: " + foo.index() ); // 1
+
+var listItem = $( "li" );
+// This implicitly calls .first()
+console.log( "Index:" + listItem.index() ); // 1
+console.log( "Index:" + listItem.first().index() );// 1
+
+var div = $( "div" );
+// This implicitly calls .first()
+console.log( "Index:" + div.index() ); // 0
+console.log( "Index:" + div.first().index() ); // 0
+```
+.index(arg)
+When .index() is called with a string argument, there are tow things to consider.
+first, jQuery will implicitly call .first on the original jQuery object. find the first element。
+second, jQuery is querying the entire DOM using the passed in string selector and checking the index within that newly queried jQuery object.
+```html
+<ul>
+    <div class="test"></div>
+    <li id="fool">foo</li>
+    <li id="barl" class="test">bar</li>
+    <li id="bazl">baz</li>
+    <div class="test"></div>
+</ul>
+<div id="last"></div>
+```
+```js 
+var foo = $( "li" );
+// This implicitly calls .first()
+console.log( "Index:" + foo.index( "li" ) ); // 0
+var baz = $( "#bazl" );
+console.log( "Index:" + baz.index( "li" )); // 2
+var listItem = $( "#barl" );
+console.log( "Index:" + listItem.index( ".test" ) ); // 1
+var div = $( "#last" );
+console.log( "Index:" + div.index( "div" ) ); // 2
+
+console.log( "Index:" +foo.index( baz ) ); // 2
+var tests = $( ".text" );
+var bar = $( "#barl" );
+// Implicitly calls .first() on the argument.
+console.log( "Index:" + tests.index( bar ) ); // 1
+console.log( "Index:" + tests.index( bar.first() ) ); // 1
+```
+
+.index() with a jQuery Object Argument
+search the first element of jQuery object
+.index() with a DOM element argument
+just search the element
+
 ## Frequently Asked Questions
 ### How do I select an item using class or ID?
+$( "#ID" )
+$( ".ClassName" )
 ### How do I select elements when I already have a DOM element?
+var myDocElement document.getElementById( "foo" );
+$( myDocElement ).find( "a" );
 ### How do I test whether an element has a particular class?
+$( this ).hasClass( “className" )
 ### How do I test whether an element exists?
+$( "#ID" ).length
 ### How do I determine the state of a toggled element?
 ### How do I select an element by an ID that has characters used in CSS notation?
+// Does not work
+$( "#ID :id" )
+// work
+$( "#ID\\:id" )
+// Does not work
+$( "#ID .id" )
+// work
+$( "#ID\\.id" )
 ### How do I disable/enable a form element?
+$( "#ID" ).prop( "disabled", true );
+$( "#ID" ).prop( "disabled", false );
 ### How do I check/uncheck a checkbox input or radio button?
+$( "#ID" ).prop( "checked", true );
+$( "#ID" ).prop( "checked", false );
 ### How do I get the text value of a selected option?
+```html
+<select id="myselect">
+    <option value="1">Mr</option>
+    <option value="2">Mrs</option>
+    <option value="3">Ms</option>
+    <option value="4">Dr</option>
+    <option value="5">Prof</option>
+</select>
+```
+$( "#myselect option:selected" ).text(); // => "Mr"
+$( "#mySelect" ).val(); // => 1
 ### How do I replace text from the 3rd element of a list of 10 items?
+$( this ).find( "li a" ).eq( 2 ).text( "hello world" );
 ### How do I pull a native DOM element from a jQuery object?
+$( "#ID" )[0]
+$( "#ID" )get(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
