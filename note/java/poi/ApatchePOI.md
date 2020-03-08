@@ -1,13 +1,21 @@
-# Apache POI
-[Apache POI](https://poi.apache.org/)
+# 从Excel导出宕机到初学Apache POI
+
+
 ## 学习来由
-因为在定位公司的OOM的时候，没完全定位问题，后来海琪定位出是因为POI中的使用表格对象原因：
+因为在定位一个公司的OOM的时候，花了2天时间，定位问题定位出了方向，知道是导出Excel的时候对象占用太大导致的OOM，但是后来计算了一下数据完全没有达到OOM的情况。症结点就是结论是没错只是连自己都没法说服，那玩啥，初步优化解决方案目测是没太大作用，毕竟不清楚根本原因是啥！
+
+然后就没啥头绪，卡死在这个点上了。后来组内大神定位出是大数据量Excel导出中使用的是POI中的XSSFWorkbook对象导致系统的内存占用过高，最终导致OOM后宕机。下面是大神的分析：
+
 > 当数据量超出65536条后，在使用HSSFWorkbook或XSSFWorkbook，程序会报OutOfMemoryError：Javaheap space;内存溢出错误。这时应该用SXSSFworkbook。
 
-嗯，没错我啥也不知道，只是知道POI是一个文件OI的工具，具体啥干啥就不知道了。
-所以问题解决的第一天特意学习一下。
+嗯，关于POI是啥我一点也不知道，更别说XSSFWorkbook etc。通过这次定位问题简单知道POI是一个文件OI的工具，具体机制以及内部原理是啥，怎么进行编码完全是一脸懵逼状态。@_@
+
+作为码农这其实是简单通用的框架了，必须要知道；另外这可是本汪以后吃饭的家伙，必须做到专业来着。老话说亡羊补牢，简单学习一下基本操作，重点学习导出。
 
 ## Why should I use Apache POI?
+
+[来源：Apache POI](https://poi.apache.org/)
+
 A major use of the Apache POI api is for Text Extraction applications such as web spiders, index builders, and content management systems.
 
 So why should you use POIFS, HSSF or XSSF?
@@ -154,6 +162,116 @@ public class SXSSF {
 
 由此可以得出，在Excel导出的时候使用XSSF会因为对象都保存在内存中，数据越大所需内存越积越多，超过限制最终导致OOM，而使用SXSSF是持久化到硬盘上，对象占用内存到了上限，再增加对表格对象不会再占用内存资源，所以可以避免OOM导致的宕机。
 
+### SXSSF 比 XSSF 占用内存低的原理
+知道SXSSF是在Excel大量导出或者JVM堆内存限制比较低的时候替换XSSF的方案。因为SXSSF是并不是像XSSF一样把所有需要处理的数据都加载到虚拟机
+内存中的，而是只加载指定Excel表格行数的数据，行数阈值大小`windowSize`创建表格的设置的（默认是100），当加载新行超过了行数限制，
+那就将最早加载的那行数据通过临时文件的形式持久化到在硬盘中，从而保证了内存中加载的数据的限制，进而确保占用内存不会随着数据量的增加而增加。
+
+**特别注意的是，持久化到硬盘的文件必须要通过调用`.dipose()`方法清理掉。**
+
+
+> [来自官方的说明 SXSSF (Streaming Usermodel API)](https://poi.apache.org/components/spreadsheet/how-to.html):
+>
+> SXSSF (package: org.apache.poi.xssf.streaming) is an API-compatible streaming extension of XSSF to be used when very large spreadsheets have to be produced, and heap space is limited. SXSSF achieves its low memory footprint by limiting access to the rows that are within a sliding window, while XSSF gives access to all rows in the document. Older rows that are no longer in the window become inaccessible, as they are written to the disk.
+>
+>   You can specify the window size at workbook construction time via new SXSSFWorkbook(int windowSize) or you can set it per-sheet via SXSSFSheet#setRandomAccessWindowSize(int windowSize)
+>
+>   When a new row is created via createRow() and the total number of unflushed records would exceed the specified window size, then the row with the lowest index value is flushed and cannot be accessed via getRow() anymore.
+>
+>   The default window size is 100 and defined by SXSSFWorkbook.DEFAULT_WINDOW_SIZE.
+>
+>   A windowSize of -1 indicates unlimited access. In this case all records that have not been flushed by a call to flushRows() are available for random access.
+>
+>   Note that SXSSF allocates temporary files that you must always clean up explicitly, by calling the dispose method.
+>
+>   SXSSFWorkbook defaults to using inline strings instead of a shared strings table. This is very efficient, since no document content needs to be kept in memory, but is also known to produce documents that are incompatible with some clients. With shared strings enabled all unique strings in the document has to be kept in memory. Depending on your document content this could use a lot more resources than with shared strings disabled.
+>
+>   Please note that there are still things that still may consume a large amount of memory based on which features you are using, e.g. merged regions, hyperlinks, comments, ... are still only stored in memory and thus may require a lot of memory if used extensively.
+>
+>   Carefully review your memory budget and compatibility needs before deciding whether to enable shared strings or not.
+
+验证测试代码:
+```java
+package my.poi;
+
+import junit.framework.Assert;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.util.CellReference;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.junit.Test;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class SXSSFTest {
+  
+    @Test
+    public void autoFlush() throws Throwable {
+        // keep 100 rows in memory, exceeding rows will be flushed to disk
+        try (SXSSFWorkbook wb = new SXSSFWorkbook(100);) {
+            Sheet sh = wb.createSheet();
+            for (int rownum = 0; rownum < 1000; rownum++) {
+                Row row = sh.createRow(rownum);
+                for (int cellnum = 0; cellnum < 10; cellnum++) {
+                    Cell cell = row.createCell(cellnum);
+                    String address = new CellReference(cell).formatAsString();
+                    cell.setCellValue(address);
+                }
+            }
+            // Rows with rownum < 900 are flushed and not accessible
+            for (int rownum = 0; rownum < 900; rownum++) {
+                Assert.assertNull(sh.getRow(rownum));
+            }
+            // ther last 100 rows are still in memory
+            for (int rownum = 900; rownum < 1000; rownum++) {
+                Assert.assertNotNull(sh.getRow(rownum));
+            }
+
+         try (FileOutputStream out = new FileOutputStream("sxssf.xlsx")) {
+                       wb.write(out);
+                   }
+
+            // dispose of temporary files backing this workbook on disk
+            wb.dispose();
+        }
+    }
+
+
+    @Test
+    public void manuallyFlush(String[] args) throws Throwable {
+        // turn off auto-flushing and accumulate all rows in memory
+        try (SXSSFWorkbook wb = new SXSSFWorkbook(-1)) {
+            SXSSFSheet sh = (SXSSFSheet)wb.createSheet();
+            for (int rownum = 0; rownum < 1000; rownum++) {
+                Row row = sh.createRow(rownum);
+                for (int cellnum = 0; cellnum < 10; cellnum++) {
+                    Cell cell = row.createCell(cellnum);
+                    String address = new CellReference(cell).formatAsString();
+                    cell.setCellValue(address);
+                }
+                // manually control how rows are flushed to disk
+                if (rownum % 100 == 0) {
+                    sh.flushRows(100); // retain 100 last rows and flush all others
+                    // ((SXSSFSheet)sh).flushRows() is a shortcut for ((SXSSFSheet)sh).flushRows(0),
+                    // this method flushes all rows
+                }
+            }
+
+            try (FileOutputStream out = new FileOutputStream("sxssf.xlsx")) {
+                wb.write(out);
+            }
+            // dispose of temporary files backing this workbook on disk
+            wb.dispose();
+        }
+    }
+
+}
+```
+讲道理，讲到底还是读的书太少，太吃亏@\_@。少年现在还是需要还是好好学习，张张姿势(\^\_\^)
+嗯，公司修改的代码貌似`wb`最后貌似没有加上`.dispose()`方法，赶紧偷偷去加上，深藏功与名。
 ## 附：
 
 Maven依赖的jar包
