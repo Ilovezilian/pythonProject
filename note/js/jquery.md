@@ -1,4 +1,5 @@
 # jquery-- Using jQuery Core
+
 ## $ vs $()
 通过jquery对象调用jQuery方法，这样的方法叫做`$.fn`命名空间,或者`jQuery prototype`，这样的方法很多。
 ``` js
@@ -13,6 +14,7 @@ $( "h1" ).remove();
 * `$( window ).on( "load", function() { ... })`只会在整个页面(window)加载完成之后执行一次（不仅仅是DOM）--
 
 ### 集中使用方式
+
 ``` js
 // A $( document ).ready() block.
 $ (document ).ready(function() {
@@ -36,6 +38,7 @@ $( window ).on( "load", readyFn );
 ## Avoiding Conflicts with Other Libraries
 为了jQuery.js不与prototype.js,MooTools,YUI等命名空间缩写的冲突，做了如下避免冲突的方式
 ### 使jQuery进入不冲突模式
+
 * 用`$j`作为jQuery的缩写别名解决别名冲突
 ```js w<-- Putting jQuery into no-conflict mode..-->
 <script src="ptorotype.js"></script>
@@ -199,21 +202,25 @@ jQuery 对象方法可以用于取值和赋值，不带参数为取值，带参�
 * .position() - Get an object with position information ofr the first element in the selection, relative to its first positioned another ancestor. This is a getter only.
 * .val() - Get or set the value of from elements.
 ### Moving, Copying, and Removing Elements
-** Moving **
+**Moving**
+
 * .insertAfter() .after()
 * .insertBefore() .before()
 * .appendTo() .append()
 * .prependTo() .prepend()
 
-** Cloning **
+**Cloning**
+
 * .clone  // If you need to copy related data and events, be sure to pass true as an argument to .clone().
 
-** Removing **
+**Removing**
+
 * .remove() // doesn't return removed elements, not have associated data and events attached 
 * .detach() // return removed elements, remain data and events attached
 * .empty() dispose of the element's inner HTML
 
 ### Creating New Elements
+
 * $()
 ```js
 // Creating new elements from an HTML string.
@@ -240,6 +247,7 @@ $( "ul" ).append( "<li>list item</li>" );
 
 ```
 ### Manipulating Attributes
+
 * .attr()
 ````js 
 // manipulating a single attribute.
@@ -607,6 +615,7 @@ console.log( "Index:" + div.first().index() ); // 0
 When .index() is called with a string argument, there are tow things to consider.
 first, jQuery will implicitly call .first on the original jQuery object. find the first element。
 second, jQuery is querying the entire DOM using the passed in string selector and checking the index within that newly queried jQuery object.
+
 ```html
 <ul>
     <div class="test"></div>
@@ -636,24 +645,39 @@ console.log( "Index:" + tests.index( bar ) ); // 1
 console.log( "Index:" + tests.index( bar.first() ) ); // 1
 ```
 
-.index() with a jQuery Object Argument
-search the first element of jQuery object
-.index() with a DOM element argument
-just search the element
+.index() with a jQuery Object Argument search the first element of jQuery object
+.index() with a DOM element argument just search the element
 
 ## Frequently Asked Questions
 ### How do I select an item using class or ID?
+
+```js 
 $( "#ID" )
 $( ".ClassName" )
+```
+
 ### How do I select elements when I already have a DOM element?
+
+```js
 var myDocElement document.getElementById( "foo" );
 $( myDocElement ).find( "a" );
+
+```
 ### How do I test whether an element has a particular class?
+
+```js
 $( this ).hasClass( “className" )
+```
+
 ### How do I test whether an element exists?
+
+```js
 $( "#ID" ).length
+```
 ### How do I determine the state of a toggled element?
 ### How do I select an element by an ID that has characters used in CSS notation?
+
+```js
 // Does not work
 $( "#ID :id" )
 // work
@@ -662,13 +686,23 @@ $( "#ID\\:id" )
 $( "#ID .id" )
 // work
 $( "#ID\\.id" )
+```
+
 ### How do I disable/enable a form element?
+
+```js
 $( "#ID" ).prop( "disabled", true );
 $( "#ID" ).prop( "disabled", false );
+
+```
+
 ### How do I check/uncheck a checkbox input or radio button?
+```js
 $( "#ID" ).prop( "checked", true );
 $( "#ID" ).prop( "checked", false );
+```
 ### How do I get the text value of a selected option?
+
 ```html
 <select id="myselect">
     <option value="1">Mr</option>
@@ -678,13 +712,22 @@ $( "#ID" ).prop( "checked", false );
     <option value="5">Prof</option>
 </select>
 ```
+```js
 $( "#myselect option:selected" ).text(); // => "Mr"
 $( "#mySelect" ).val(); // => 1
+```
+
 ### How do I replace text from the 3rd element of a list of 10 items?
+
+```js
 $( this ).find( "li a" ).eq( 2 ).text( "hello world" );
+```
 ### How do I pull a native DOM element from a jQuery object?
+
+```js
 $( "#ID" )[0]
 $( "#ID" )get(0)
+```
 
 
 
