@@ -6,6 +6,18 @@
 
 类型对象变量保障在虚拟机编译时的类型安全，并被一个类型或者方法操作，这是一个对于类型系统的增强。
 
+### 相关术语
+* ArrayList<E>中的E称为类型参数变量, 也叫形式类型参数（formal type parameters）
+    * 常用大写的单个字母表示泛型变量：
+    * E for element 
+    * T for type
+    * K for keys 
+    * V for values
+
+* ArrayList<Integer>中的Integer称为实际类型参数（actual type argument）
+* 整个称为ArrayList<E>泛型类型
+* 整个ArrayList<Integer>称为参数化的类型（parameterized type）
+
 ## 核心
 敲代码的时候总是会遇到强制类型转换，每次遇到总是想用一种方式确保它不会出现，毕竟那个代码太丑以至于受不，而且很容易因为书写错误导致转换报错。
 
@@ -18,11 +30,6 @@
 对于所有的声明过的泛型类型实际上在虚拟机只进行过一次初始化为单例的类文件，就像普通的类和接口一样。
 
 3. 泛型变量
-用大写的单个字母表示泛型变量：
-E for element 
-T for type
-K for keys 
-V for values
 
 ### 泛型关系
 泛型变量对应的对象是继承关系，但是不代表确定泛型变量的泛型是继承关系。
@@ -30,7 +37,11 @@ V for values
 > 泛型变量只是变量，就是变量用实际的类型替换了，单也只是泛型的一个参数，实际上的的继承关系还是按照G的继承关系来的。混淆就不好了吧(^\_^)
 
 ## 语法规则
-### 类
+### 泛型接口
+只能用在抽象方法上
+### 泛型类
+只能用在成员变量上，不能用在静态成员变量上，毕竟泛型类只初始化一次，但是泛型成员变量只有在对象运行的时候才知道对应的对象是啥，就没法在静态成员变量上使用类层次使用泛型类参数。
+只能使用引用类型
 1. 声明
 ```java
 public class myClass<T>{ 
@@ -41,30 +52,20 @@ public class myClass<T>{
 ```
 ### 方法
 1. 参数
+    1. 上限 extends
+    2. 下限 super
+    3. 并且 &
 ```java
-public class myClass<T>{ 
-    public void myMethod(T t, S s) {}
-    public T myMethod(T t) {}
+public class myClass{ 
+    public <T> T myMethod(T t) {}
     public T myMethod(List<T> list, T t, S s) {}
-    public <T extends S> List<T> myMethod(List<T> list, T t, S s) {}
-    public <T super Object> List<T> myMethod(List<T> list, T t) {}
-    public <T super  Object> List<T> myMethod(List<T> list, T t) {}
+    public <T extends S, S> List<T> myMethod(List<T> list, T t, S s) {}
 }
 ```
-    2. 限制-下 继承
-```java
-
-```
-    3. 范围
-```java
-
-```
-2. 返回值
-```java
-
-```
 ## 泛型类型声明&通配符&通配类型
+
 ### 概念
+
 > Collection<?> (pronounced "collection of unknown")
 统配符`?` 表示：未知的类型，可以用来匹配任意类型，称为统配类型
 
@@ -73,6 +74,7 @@ public class myClass<T>{
 读取数据的时候可以用Object类型进行声明，因为统配类型说到底也是一个对象，所以可以用Object进行声明。
 
 ### 通配符界限
+
 > Wildcards are designed to support flexible subtyping, 
 > which is what we're trying to express where allow a variety of actual argument types to be used at different invocation sites.
 
@@ -150,6 +152,7 @@ public class Collections<E> {
     //  true
 ```
 ### 在泛型类上使用instanceOf是没有意义的
+
 ```java 
     Collection cs = new ArrayList<String>();
     // Illegal.   Illegal generic type for instanceof
