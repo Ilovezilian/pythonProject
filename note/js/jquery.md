@@ -190,8 +190,10 @@ $( "form :selected" );
 ```
 
 ## Working with Selections
+
 jQuery 对象方法可以用于取值和赋值，不带参数为取值，带参数为赋值。
 另外jQuery对象方法的返回值是jQuery对象，这样可以继续调用jQuery方法，这貌似是叫做调用链。
+
 ## Manipulating Elements
 ### Getting and Setting Information About Elements
 * .html() - Get or set the HTML contents.
@@ -452,6 +454,8 @@ firstLi.data( "contentDiv" ).html( "new content" );
 * $.dequeue()
 * $.each()
 * $.extend()
+  *  jQuery.extend([deep ,] target [, object1 ] [, objectN ] ) 
+  * *Merge the contents of two or more objects together into the first object.*   target will change,and return target.
 * $.fn.extend()
 * $.globalEval()
 * $.grep()
