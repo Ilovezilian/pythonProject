@@ -4,9 +4,10 @@
 
 > this long-awaited enhancement to the type system allows a type or method to operate on objects of various types while providing compile-time type safety.
 
-类型对象变量保障在虚拟机编译时的类型安全，并被一个类型或者方法操作，这是一个对于类型系统的增强。
+泛型对类型的加强体现在：类型系统通过操作基于类型或者方法变量的对象来保障运行时类型安全。
 
 ### 相关术语
+
 * ArrayList<E>中的E称为类型参数变量, 也叫形式类型参数（formal type parameters）
     * 常用大写的单个字母表示泛型变量：
     * E for element 
@@ -19,9 +20,8 @@
 * 整个ArrayList<Integer>称为参数化的类型（parameterized type）
 
 ## 核心
-敲代码的时候总是会遇到强制类型转换，每次遇到总是想用一种方式确保它不会出现，毕竟那个代码太丑以至于受不，而且很容易因为书写错误导致转换报错。
 
-强制一个自己定义的类中不需要重复代码而且可以指定数据的类型，从此去掉强制转换导致的转换错误和代码优雅，是泛型的核心。
+强制一个自定义的类中不需要重复代码而且可以指定数据的类型，从此去掉强制转换导致的转换错误和代码优雅，是泛型的核心。
 
 1. 泛型的理解
 形式类型参数会被实际的类型替换掉，换个角度理解：形式类型参数就是类型变量。
@@ -29,32 +29,35 @@
 2. 泛型初始化
 对于所有的声明过的泛型类型实际上在虚拟机只进行过一次初始化为单例的类文件，就像普通的类和接口一样。
 
-3. 泛型变量
 
 ### 泛型关系
-泛型变量对应的对象是继承关系，但是不代表确定泛型变量的泛型是继承关系。
+泛型实际类型参数对应的类是继承关系，但是不代表对应的泛型是继承关系。泛型的继承关系只能由泛型来确定。
 如：Foo 继承 Bar 但是：G<Foo> 不继承 G<Bar>
-> 泛型变量只是变量，就是变量用实际的类型替换了，单也只是泛型的一个参数，实际上的的继承关系还是按照G的继承关系来的。混淆就不好了吧(^\_^)
 
 ## 语法规则
+
 ### 泛型接口
-只能用在抽象方法上
+
+只能用在抽象方法上，其实没太理解这句话的意思，也许就是说在接口中使用泛型的时候不能实现泛型方法。
 ### 泛型类
-只能用在成员变量上，不能用在静态成员变量上，毕竟泛型类只初始化一次，但是泛型成员变量只有在对象运行的时候才知道对应的对象是啥，就没法在静态成员变量上使用类层次使用泛型类参数。
-只能使用引用类型
+只能用在成员变量上，不能用在静态成员变量上，毕竟泛型类只初始化一次，初始化类的时候泛型对应的泛型形式参数都还么有确定，泛型形式参数确定是在对象创建之后出传入实际类型参数之后才能确定，所以泛型参数不能用于表示静态成员变量，可以用于对象变量。
+
+实际类型参数的类型只能使用引用类型。
+
 1. 声明
 ```java
 public class myClass<T>{ 
-    public void myMethod(T t, S s) {}
     public T myMethod(T t) {}
-    public T myMethod(List<T> list, T t, S s) {}
+    public <S> void myMethod(T t, S s) {}
+    public T myMethod(List<T> list, T t) {}
 }
 ```
 ### 方法
+
 1. 参数
-    1. 上限 extends
-    2. 下限 super
-    3. 并且 &
+    1. 上限 extends  可用于形式类型参数和通配符
+    2. 下限 super 只能用于通配符
+    3. 并且 & 用于表示多个约束关系相交
 ```java
 public class myClass{ 
     public <T> T myMethod(T t) {}
@@ -144,6 +147,7 @@ public class Collections<E> {
 ```
 
 ## 要点（The Fine Print）
+
 ### 所有变量参数类型的泛型对象都共享一个泛型类的类实例
 ```java 
     List <String> l1 = new ArrayList<String>();
@@ -166,6 +170,7 @@ public class Collections<E> {
 }
 ```
 ### 数组
+
 > if your entire application has been compiled without unchecked warnings using javac -source 1.5, it is type safe.
 
 1. 可以创建通配符的泛型对象数组，但是不可以创建有对象参数的泛型对象数组。
@@ -203,20 +208,6 @@ String s = (String) lsa[1].get(0);
 }
 ```
 ## Class类在JDK 1.5也是泛型类
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
