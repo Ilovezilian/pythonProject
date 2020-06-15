@@ -11,7 +11,7 @@ PT134017
 ```txt
 **相关工具路径：eas\Server\server\deploy\eas.ear\cp_web.war\tools**
 
-http://localhost:6888/easportal/tools/getclassurl.jsp?className=com.kingdee.shr.ats.web.handler.ScheduleShiftListHandler
+http://localhost:6888/easportal/tools/getclassurl.jsp?className=com.kingdee.eas.hr.ats.ScheduleShift
 > 这个工具只适用于后端(shr-ats, shr-atscontrl)Java类，前端(attendmanage, attendContrl)Java类不适用 -- 这也坑
 http://localhost:6888/easportal/tools/getclasspath.jsp
 > 参考楼上
