@@ -1,6 +1,12 @@
 # eas 外网 环境
 
-```txt
+```text
+华为puc
+http://139.9.4.128:5888/shr/home.do
+Cherie
+888888
+```
+```text
 172.18.7.111
 vnc 登录：172.18.7.111:1
 \\172.18.7.111\eas860_auto	
@@ -34,7 +40,7 @@ EAS端口号：11033
 
 
 
-``` txt
+``` text
 860sp1 测试
 http://172.18.7.111:8888/shr/home.do
     suting_chen   13530885099  surinm5810 
