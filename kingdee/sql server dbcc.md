@@ -18,6 +18,39 @@ T_HR_ATS_AttendanceFileHis
 T_HR_ATS_AttendanceFile
 T_ORG_Admin
 t_bd_person
+t_hr_ats_shift
+t_org_admin
+t_org_hro
+```
+```sql
+dbcc showcontig(t_hr_ats_scheduleshift);
+dbcc showcontig(t_hr_ats_scheduleshiftItem);
+dbcc showcontig(T_HR_ATS_AttendanceFileHis);
+dbcc showcontig(T_HR_ATS_AttendanceFile);
+dbcc showcontig(t_bd_person);
+dbcc showcontig(t_hr_ats_shift);
+dbcc showcontig(t_org_admin);
+dbcc showcontig(t_org_hro);
+
+dbcc dbReindex(t_hr_ats_scheduleshift);
+dbcc dbReindex(t_hr_ats_scheduleshiftItem);
+dbcc dbReindex(T_HR_ATS_AttendanceFileHis);
+dbcc dbReindex(T_HR_ATS_AttendanceFile);
+dbcc dbReindex(t_bd_person);
+dbcc dbReindex(t_hr_ats_shift);
+dbcc dbReindex(t_org_admin);
+dbcc showcontig(t_org_hro);
+
+select * from t_hr_ats_scheduleshift;
+select * from t_hr_ats_scheduleshiftItem;
+select * from T_HR_ATS_AttendanceFileHis;
+select * from T_HR_ATS_AttendanceFile;
+select * from T_ORG_Admin;
+select * from t_bd_person;
+select * from t_hr_ats_shift;
+select * from t_org_admin;
+select * from t_org_hro;
+
 ```
 ### 输出分析
 ```sql 
