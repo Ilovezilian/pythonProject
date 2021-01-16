@@ -3,62 +3,20 @@
 [dbcc 命名使用连接](https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-transact-sql?view=sql-server-ver15)
 ## 查询索引情况
 ``` sql
--- 查看碎片化情况
-dbcc showcontig(t_hr_ats_scheduleshiftItem);
--- 重建索引
-DBCC DBREINDEX(t_hr_ats_scheduleshiftItem);
--- 查看索引
-EXEC Sp_helpindex t_hr_ats_scheduleshiftItem;
-```
-### 排班查询慢可以尝试重建这几个表
-```cmd
-t_hr_ats_scheduleshift
-t_hr_ats_scheduleshiftItem
-T_HR_ATS_AttendanceFileHis
-T_HR_ATS_AttendanceFile
-T_ORG_Admin
-t_bd_person
-t_hr_ats_shift
-t_org_admin
-t_org_hro
-```
-```sql
-dbcc showcontig(t_hr_ats_scheduleshift);
-dbcc showcontig(t_hr_ats_scheduleshiftItem);
-dbcc showcontig(T_HR_ATS_AttendanceFileHis);
-dbcc showcontig(T_HR_ATS_AttendanceFile);
-dbcc showcontig(t_bd_person);
-dbcc showcontig(t_hr_ats_shift);
-dbcc showcontig(t_org_admin);
-dbcc showcontig(t_org_hro);
-
-dbcc dbReindex(t_hr_ats_scheduleshift);
-dbcc dbReindex(t_hr_ats_scheduleshiftItem);
-dbcc dbReindex(T_HR_ATS_AttendanceFileHis);
-dbcc dbReindex(T_HR_ATS_AttendanceFile);
-dbcc dbReindex(t_bd_person);
-dbcc dbReindex(t_hr_ats_shift);
-dbcc dbReindex(t_org_admin);
-dbcc showcontig(t_org_hro);
-
-select * from t_hr_ats_scheduleshift;
-select * from t_hr_ats_scheduleshiftItem;
-select * from T_HR_ATS_AttendanceFileHis;
-select * from T_HR_ATS_AttendanceFile;
-select * from T_ORG_Admin;
-select * from t_bd_person;
-select * from t_hr_ats_shift;
-select * from t_org_admin;
-select * from t_org_hro;
-
+-- 查看表碎片化情况
+dbcc showcontig(Table_Name);
+-- 重建表索引
+DBCC DBREINDEX(Table_Name);
+-- 查看表索引
+EXEC Sp_helpindex Table_Name;
 ```
 ### 输出分析
 ```sql 
-dbcc showcontig(t_hr_ats_scheduleshiftItem);
+dbcc showcontig(Table_Name);
 /*
 重建索引之前：
-DBCC SHOWCONTIG scanning 'T_HR_ATS_ScheduleShiftItem' table...
-Table: 'T_HR_ATS_ScheduleShiftItem' (159196213); index ID: 1, database ID: 10
+DBCC SHOWCONTIG scanning 'Table_Name' table...
+Table: 'Table_Name' (159196213); index ID: 1, database ID: 10
 TABLE level scan performed.
 - Pages Scanned................................: 5974
 - Extents Scanned..............................: 752
@@ -73,13 +31,13 @@ DBCC execution completed. If DBCC printed error messages, contact your system ad
 
 */
 
-DBCC DBREINDEX(t_hr_ats_scheduleshiftItem);
+DBCC DBREINDEX(Table_Name);
 
-dbcc showcontig(t_hr_ats_scheduleshiftItem);
+dbcc showcontig(Table_Name);
 /*
 重建索引之后：
-DBCC SHOWCONTIG scanning 'T_HR_ATS_ScheduleShiftItem' table...
-Table: 'T_HR_ATS_ScheduleShiftItem' (159196213); index ID: 1, database ID: 10
+DBCC SHOWCONTIG scanning 'Table_Name' table...
+Table: 'Table_Name' (159196213); index ID: 1, database ID: 10
 TABLE level scan performed.
 - Pages Scanned................................: 3255
 - Extents Scanned..............................: 407
