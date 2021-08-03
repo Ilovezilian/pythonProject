@@ -170,7 +170,7 @@ public class SXSSF {
 **特别注意的是，持久化到硬盘的文件必须要通过调用`.dipose()`方法清理掉。**
 
 
-> [来自官方的说明 SXSSF (Streaming Usermodel API)](https://poi.apache.org/components/spreadsheet/how-to.html):
+> [来自官方的说明 SXSSF (Streaming Usermodel API)](https://poi.apache.org/components/spreadsheet/how-to.html#sxssf):
 >
 > SXSSF (package: org.apache.poi.xssf.streaming) is an API-compatible streaming extension of XSSF to be used when very large spreadsheets have to be produced, and heap space is limited. SXSSF achieves its low memory footprint by limiting access to the rows that are within a sliding window, while XSSF gives access to all rows in the document. Older rows that are no longer in the window become inaccessible, as they are written to the disk.
 >
