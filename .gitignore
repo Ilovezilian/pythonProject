@@ -114,3 +114,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 /kingtalk/
+/kingdee/ksm/
+/kingdee/generate/attendanceFileListResult.json
+/kingdee/generate/fillSignCardImport_export.csv
