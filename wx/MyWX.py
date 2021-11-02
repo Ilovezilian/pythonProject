@@ -17,5 +17,14 @@ def sendFirstWXmsg():
         time.sleep(1)
     # 退出登录
     itchat.logout()
+
+
+def getMessage():
+    message = '''
+    祝大家新的一年元旦快乐，
+    '''
+    male: 越来越年轻
+    female: 越来越小仙女
+
 if __name__ == "__main__":
     sendFirstWXmsg()
