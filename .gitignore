@@ -117,3 +117,4 @@ venv.bak/
 /kingdee/ksm/
 /kingdee/generate/attendanceFileListResult.json
 /kingdee/generate/fillSignCardImport_export.csv
+/kingdee/singleUserGoupUsers.json
