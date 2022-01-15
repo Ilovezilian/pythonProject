@@ -1,0 +1,13 @@
+<application>
+  <component name="DaemonCodeAnalyzerSettings">
+    <option name="SHOW_METHOD_SEPARATORS" value="true" />
+  </component>
+  <component name="DefaultFont">
+    <option name="FONT_SIZE" value="18" />
+    <option name="LINE_SPACING" value="1.1" />
+    <option name="SECONDARY_FONT_FAMILY" value="DialogInput" />
+  </component>
+  <component name="EditorSettings">
+    <option name="USE_SOFT_WRAPS" value="CONSOLE" />
+  </component>
+</application>
