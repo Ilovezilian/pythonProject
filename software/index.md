@@ -5,3 +5,6 @@
 [数据库工具](database/index.md)
 [IDE 集成开发工具](IED/index.md)
 [浏览器](browser/index.md)
+[多媒体必备](multimedia/index.md)
+[云盘](yunPan/index.md)
+[terminal](terminal/index.md)

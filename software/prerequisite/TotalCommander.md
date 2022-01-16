@@ -14,13 +14,31 @@
 ctrl+\ | 可一步跳转到根目录
 ctrl+-> | 把左边映射到右边
 ctrl+<- | 把右边映射到左边
+ctrl+u | 交换窗口
 alt+F5 | 压缩到对面窗口
+ALT+SHIFT+F5 | 移动到压缩文件中
 ctrl+alt+F5 | 压缩到当前目录
-alt+F9 | 解压缩
-F5 | 从当前窗口复制到对面窗口
+alt+F6/alt+F9 | 解压缩
+F4 | 编辑文件
+shift+F4 | 新建文件
+F5 | 从当前窗口 复制 到对面窗口
+shift+F5 | 复制文件到当前窗口
+F6 | 从当前窗口 移动 到对面窗口
+shift+F6 | 重命名
+F7 | 创建文件夹
 alt+F7 | 搜索文件
+ALT+SHIFT+F7 | 用单独线程搜索文件
+alt+F0 | 打开文件夹树并定位到当前位置
+CTRL+PgDn | 进入下一层目录（和enter大致相同，也可以进入zip、exe文件内）
+CTRL+F8 | 当前窗口设置文件夹树
+CTRL+shift+F8 | 展示各出窗口文件夹树，不显示、显示一个、显示两个
+space/insert | 选择
+ctrl+f | 打开ftp链接
+ctrl+shift+f | 取消ftp链接
+ctrl+l | 计算文件大小
 ctrl+m | 批量改名
 ctrl+r | 刷新
+ctrl+s | 激活或禁用过滤
 
 
 ## 配置

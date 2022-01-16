@@ -9,3 +9,8 @@ yyds，学会之后就离不开了。
 ## NotePad ++
 当vim不存在的时候，还是优先用，挺强大的。
 
+## typora
+一款所见即所得的 markdown 编辑器。
+
+## cmd markdown
+支持vim，只是后面用IDEA编辑markdown文本之后就再也没有用过了。
