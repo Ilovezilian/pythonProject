@@ -44,7 +44,6 @@ ctrl+s | 激活或禁用过滤
 ## 配置
 安装目录：的 wincmd.ini
 ``` config
-
 [Configuration]
 
 StartupScreen=0
@@ -54,9 +53,9 @@ InstallDir=d:\totalcmd
 languageini=wcmd_chn.lng
 Mainmenu=wcmd_chn.mnu
 UseNewDefFont=0
-firstmnu=2672
+firstmnu=2480
 FirstTime=0
-test=6
+test=35
 BreadcrumbDelayButton=-250
 ShowHiddenSystem=1
 UseLongNames=1
@@ -141,6 +140,7 @@ CompareIgnoreRepeatedLines=1
 CompareVertical=0
 QuickSearchAutoFilter=1
 UseRubberBandSelection=1
+pluginbasedir=D:\totalcmd\plugins
 [Buttonbar]
 IconDll_default.bar=
 IconDll_vertical.bar=
@@ -148,7 +148,7 @@ IconDll_vertical.bar=
 $checksum$=3014672
 [Layout]
 ButtonBar=0
-ButtonBarVertical=1
+ButtonBarVertical=0
 DriveBar1=0
 DriveBar2=0
 DriveBarFlat=1
@@ -233,7 +233,7 @@ RenameDY=510
 RenameMax=0
 RenameTabs=115,145,345,405,525
 [AllResolutions]
-FontSize=11
+FontSize=13
 FontName=Tahoma
 FontSizeWindow=8
 FontNameWindow=Tahoma
@@ -241,37 +241,43 @@ FontWeight=400
 FontWeightWindow=400
 FontNameDialog=Tahoma
 FontSizeDialog=11
+FontCharsetWindow=1
+FontCharset=1
 [Tabstops]
-0=178
-1=182
-3=244
-4=-1
-6=550
+0=320
+1=324
+3=385
+4=0
+6=833
 5=98
 AdjustWidth=1
 [Packer]
 ZIPlikeDirectory=1
-InternalUnarj=0
+InternalUnarj=1
 ARJlongnames=0
-InternalUnlzh=0
-InternalUnrar=0
-InternalUnace=0
+InternalUnlzh=1
+InternalUnrar=1
+InternalUnace=1
 LinuxCompatible=0
-ARJ=""C:\Program Files\7-Zip\7zFM.exe""
-LHA=""C:\Program Files\7-Zip\7zFM.exe""
-RAR=""C:\Program Files\7-Zip\7zFM.exe""
-UC2=""C:\Program Files\7-Zip\7zFM.exe""
-ACE=""C:\Program Files\7-Zip\7zFM.exe""
-InternalZip=0
-InternalUnzip=0
+ARJ=D:\totalcmd\plugins\wcx\Total7zip\7zG.exe
+LHA=D:\totalcmd\plugins\wcx\Total7zip\7zG.exe
+RAR=D:\totalcmd\plugins\wcx\Total7zip\7zG.exe
+UC2=D:\totalcmd\plugins\wcx\Total7zip\7zG.exe
+ACE=D:\totalcmd\plugins\wcx\Total7zip\7zG.exe
+InternalZip=1
+InternalUnzip=1
 zipnt=0
-ZIP=C:\Program Files\7-Zip\7zFM.exe
-UnZIP=""C:\Program Files\7-Zip\7zFM.exe""
+ZIP=D:\totalcmd\plugins\wcx\Total7zip\7zG.exe
+UnZIP=D:\totalcmd\plugins\wcx\Total7zip\7zG.exe
 InternalZipRate=9
 Zip83Name=0
 ZipSetDateToNewest=1
 nodelete=0
 OpenPartial=0
+ZipUnicode=5
+ExtractPathInZIP=1
+UnZIPOverwrite=0
+LastUsedPacker64=10000
 [Confirmation]
 deleteDirs=1
 OverwriteFiles=1
@@ -281,9 +287,15 @@ MouseActions=0
 [ContentPlugins64]
 $checksum$=3014672
 [SearchName]
-0=wincmd.ini
+0=*exe | *a* c* b* d*
+1=*exe | *a* c* b*
+2=*exe | *a* c*
+3=*exe | *a*
+4=*exe | css*
+5=wincmd.ini
 [SearchIn]
-0=d:\totalcmd
+0=e:\download\softwareOfWindows
+1=d:\totalcmd
 [ListerPlugins64]
 $checksum$=3014672
 [CustomFields]
@@ -293,7 +305,7 @@ AutoLoad=0
 1=*.bmp *.gif *.jpg
 [left]
 userspec=*.bmp *.gif *.jpg
-path=d:\Downloads\
+path=d:\
 ViewMode=10001
 activepanelcolor=-1
 activepanelcolor2=-1
@@ -302,10 +314,6 @@ SpecialView=0
 show=1
 sortorder=0
 negative Sortorder=0
-[ViewModes]
-0_name=<默认色>
-0_icon=
-0_options=-1|-1|0||-1|-1|-1
 [searches]
 2DayBefore_SearchFor=
 2DayBefore_SearchIn=
@@ -315,13 +323,26 @@ negative Sortorder=0
 1WeekBefore_SearchIn=
 1WeekBefore_SearchText=
 1WeekBefore_SearchFlags=0|002002000020|||7|1|||||0000|||
+3DayBefore_SearchFor=
+3DayBefore_SearchIn=
+3DayBefore_SearchText=
+3DayBefore_SearchFlags=0|002002000020|||3|1|||||0000|||
 [Colors]
 ColorFilter1=>2DayBefore
 ColorFilter1Color=255
 ColorFilter2=>1WeekBefore
-ColorFilter2Color=16711680
+ColorFilter2Color=16711935
+InverseCursor=0
+ThemedCursor=1
+InverseSelection=1
+BackColor=2105376
+BackColor2=2105376
+ForeColor=65280
+MarkColor=8421504
+CursorColor=8421504
+CursorText=-1
 [right]
-path=e:\download\chrome\pt\PT149474 850sp1\Server\server\lib\addon\attendmanage\lib\
+path=d:\git\
 ViewMode=10001
 activepanelcolor=-1
 activepanelcolor2=-1
@@ -332,7 +353,6 @@ sortorder=0
 negative Sortorder=0
 userspec=*.html *.htm *.jsp *xhtml
 [Command line history]
-0=dir
 [MkDirHistory]
 [SearchText]
 [RenameTemplates]
@@ -370,21 +390,57 @@ RenameDX=720
 RenameDY=510
 RenameMax=0
 RenameTabs=115,145,345,405,525
+SearchX=484
+SearchY=126
+SearchDX=810
+SearchDY=378
+SearchMax=0
+TreeDlgX=757
+TreeDlgY=363
+TreeDlgDX=421
+TreeDlgDY=393
+TreeDlgMax=1
+FontSize=13
+FontName=Tahoma
+FontSizeWindow=8
+FontNameWindow=Tahoma
+FontCharsetWindow=1
+FontWeight=400
+FontWeightWindow=400
+FontNameDialog=Tahoma
+FontSizeDialog=11
+FontCharset=1
+Tabstops=320,324,385,-1,833,98
+CustColumnX=445
+CustColumnY=177
+CustColumnDX=968
+CustColumnDY=726
+CustColumnMax=0
+[RenameSearchFind]
+0=庄
+[RenameSearchReplace]
+0=桩
+[PackerPlugins]
+7z=735,D:\totalcmd\plugins\wcx\Total7zip\Total7zip.wcx
+[PackerPlugins64]
+$checksum$=413799515
+exts=7z*
 [DirMenu]
 menu1=&1 Documents
 cmd1=cd d:\Documents
 menu2=&2 Downloads
 cmd2=cd d:\Downloads
-menu4=&4 git
-cmd4=cd d:\git
-menu5=&5 BaiduYunDownload
-cmd5=cd d:\BaiduYunDownload
-menu8=&tt
-cmd8=cd c:\tt
-[RenameSearchFind]
-0=庄
-[RenameSearchReplace]
-0=桩
+menu3=&4 git
+cmd3=cd d:\git
+menu7=&tt
+cmd7=cd c:\tt
+[ViewModeSwitch]
+Enabled=1
 [RightHistory]
 [LeftHistory]
+[ViewModes]
+0_name=<默认色>
+0_icon=
+0_options=-1|-1|0||-1|-1|-1
+
 ```
