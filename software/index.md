@@ -8,3 +8,4 @@
 [多媒体必备](multimedia/index.md)
 [云盘](yunPan/index.md)
 [terminal](terminal/index.md)
+[比较软件](compare/index.md)
