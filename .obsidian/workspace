@@ -1,0 +1,117 @@
+{
+  "main": {
+    "id": "0b83ffd2c7ca0b3b",
+    "type": "split",
+    "children": [
+      {
+        "id": "1db2832f56205dd6",
+        "type": "leaf",
+        "state": {
+          "type": "empty",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d6e73cb6bc7a30f7",
+    "type": "split",
+    "children": [
+      {
+        "id": "838137e2aec758e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "64a9b4ed6481c37d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "196b76a66216788c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#Mettings",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c7a1f29dc8b734c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "5b8a30e90635ac2e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "51d6d17b05cd6e9b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "d76c0a074d96c23a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2d9afd3552f26fbd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "1db2832f56205dd6",
+  "lastOpenFiles": [
+    "Test.md",
+    "effectiveWay/rule/Zettelkasten 卡片盒笔记法.md",
+    "tmp/话题引用.md",
+    "tmp/flomo.md",
+    "tmp/善思卡.md",
+    "software/knowledgeManage/Obsidian.md",
+    "effectiveWay/rule/笔记优先法则.md",
+    "software/vcs/git.md",
+    "software/vcs/index.md",
+    "software/knowledgeManage/index.md"
+  ]
+}
