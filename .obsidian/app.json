@@ -4,5 +4,8 @@
   "vimMode": true,
   "attachmentFolderPath": "./",
   "promptDelete": false,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "rightToLeft": false,
+  "newFileLocation": "current",
+  "newFileFolderPath": "tmp"
 }
