@@ -1,0 +1,4 @@
+- tags: #Mettings
+- Date:{{date}}
+- Note:[[nodets&Draft]]
+- Content
