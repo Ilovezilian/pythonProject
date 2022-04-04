@@ -2,10 +2,11 @@
   "legacyEditor": false,
   "showLineNumber": true,
   "vimMode": true,
-  "attachmentFolderPath": "./",
+  "attachmentFolderPath": "./attachments",
   "promptDelete": false,
   "alwaysUpdateLinks": true,
   "rightToLeft": false,
   "newFileLocation": "current",
-  "newFileFolderPath": "tmp"
+  "newFileFolderPath": "tmp",
+  "useMarkdownLinks": true
 }
