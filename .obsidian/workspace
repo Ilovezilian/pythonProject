@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "kingdee/荣耀/补签卡ui重构.md",
+            "file": "README.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kingdee/荣耀/补签卡ui重构.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kingdee/荣耀/补签卡ui重构.md"
+                "file": "README.md"
               }
             }
           }
@@ -110,15 +110,15 @@
   },
   "active": "67c050c98fe42e29",
   "lastOpenFiles": [
+    "README.md",
+    "view/index.md",
+    "todo.md",
     "kingdee/荣耀/补签卡ui重构.md",
     "kingdee/荣耀/会议路径.md",
     "kingdee/荣耀/attachments/Pasted image 20220402135017.png",
     "kingdee/荣耀/Pasted image 20220402134409.png.md",
     "kingdee/荣耀/attachments/Pasted image 20220402134458.png",
     "kingdee/荣耀/Pasted image 20220402134316.png",
-    "kingdee/荣耀/attachments/Pasted image 20220402134409.png",
-    "kingdee/荣耀/Pasted image 20220402134058.png",
-    "daily/2022-04-02 _Sat.md",
-    "software/knowledgeManage/Obsidian.md"
+    "kingdee/荣耀/attachments/Pasted image 20220402134409.png"
   ]
 }
