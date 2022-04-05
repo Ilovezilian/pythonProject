@@ -30,4 +30,4 @@ jetbrains的Web端IDE
 之前用过，当时才出，用来构造项目，编写程序不够智能和方便。
 现在试试其实还是不错，在程序代码使用上没有IDEA那么强大。
 最近想要总结一下，做些文档方面的工作，发现做文档编辑器还是很好的。
-[vs code](vsCode.md)
+[[vsCode]][vs code](vsCode.md)
