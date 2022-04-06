@@ -63,10 +63,12 @@ git rebase i HEAD~3
 ```
 
 ### 删除
+#### 删除本地和暂存(Staged)的文件
 ```git 
-// 删除本地和暂存(Staged)的文件
 git rm <file>
-// 删除暂存(Staged)的文件，保留本地文件
+```
+####  删除暂存(Staged)的文件，保留本地文件
+```git 
 git rm --cached <file>
 
 ```
