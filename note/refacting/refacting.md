@@ -23,6 +23,8 @@
 ### 定义
 > Refactoring is the process of changing a software system in a way that does not alter the external behavior of the code yet improves its internal structure. 
 
+^7d2a11
+
 重构是在不改系统外在使用前提下，调整代码以改善系统内部结构的一个过程。
 重构是一种代码整理方法，本质是改进设计。
 设计不是一开始就设计好的，是一点点实现一点改进的。相应的以前的代码设计不可能适用不断提出的需求，所以相应的改进代码结构设计就显得尤为重要。
