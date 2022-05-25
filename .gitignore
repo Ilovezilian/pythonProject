@@ -1,3 +1,11 @@
+# maven ignore
+target/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+
 # eclipse ignore
 .settings/
 .project
@@ -113,3 +121,22 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# temp ignore
+logs/
+tmp/
+*.doc
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+*.versionsBackup
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# to8to rpc
+version
+
