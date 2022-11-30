@@ -1,0 +1,32 @@
+fullPathField,Field,Type,Comment
+t8t_scm_sup.inv_operate_bills.project_id,project_id,int(10) unsigned,项目id
+t8t_scm_sup.inv_storage_record.project_id,project_id,int(10) unsigned,项目ID
+t8t_scm_sup.pom_refund_order.project_id,project_id,int(10) unsigned,项目id，crm采购单对应的项目id
+t8t_scm_sup.som_needs_order.yid,yid,int(10) unsigned,项目id，#取自CRM项目id
+t8t_scm_sup.som_sales_order.yid,yid,int(10) unsigned,项目id，#取自CRM项目id
+t8t_scm_sup.supply_acceptance_order.source,source,char(20),来源，对应关联订单类型，对应：1、2 商家名，3 项目id，4、5 来源仓库分组名称
+t8t_scm_sup.supply_instorage_order.source,source,char(20),来源，对应关联订单类型，对应：1、2 商家名，3 项目id，4、5 来源仓库分组名称
+t8t_scm_sup.supply_purchase_direct_order.project_id,project_id,int(10) unsigned,项目ID
+t8t_scm_mrp.mrp_material_requirement_detail.project_id,project_id,int(10) unsigned,项目id
+t8t_scm_mrp.mrp_material_requirement_detail_hst.project_id,project_id,int(10) unsigned,项目id
+t8t_scm_rem.rem_cost_rec_order_item.project_id,project_id,int(10) unsigned,项目id
+t8t_scm_rem.rem_reconciliation_order_item.project_id,project_id,int(10) unsigned,项目ID|取自supply_purchase_direct_order.project_id
+t8t_scm_oos.oos_dispatch_order.crm_order_id,crm_order_id,int(10) unsigned,crm业主项目id -2019-3-6-kaiyu.xia-
+dsp_ps_gdm.gdm_goods_demand.source_project_id,source_project_id,bigint(20) unsigned,源项目id#取自项目信息
+dsp_ps_gdm.gdm_goods_demand_cache.source_project_id,source_project_id,bigint(20) unsigned,源项目id#取自项目信息
+dsp_ps_gdm.gdm_goods_demand_cache_20180517.source_project_id,source_project_id,bigint(20) unsigned,源项目id#取自项目信息
+dsp_ps_gdm.gdm_pmat_order.source_project_id,source_project_id,bigint(20) unsigned,源项目id#取自项目信息
+dsp_ps_gdm.gdm_pmat_order_cache.source_project_id,source_project_id,bigint(20) unsigned,源项目id#取自项目信息
+dsp_ps_gdm.gdm_pmat_selection_order.source_project_id,source_project_id,bigint(20) unsigned,源项目id#取自项目信息
+t8t_scm_pom.pom_sales_order.project_id,project_id,int(10) unsigned,项目id
+t8t_scm_fhc.fhc_biz_order.project_id,project_id,int(10) unsigned,项目id
+t8t_scm_fhc.fhc_project.project_id,project_id,int(10) unsigned,项目id
+不修改,,,
+dsp_ps_gdm.gdm_pmat_selection_order.project_id,project_id,bigint(20) unsigned,项目ID
+dsp_ps_gdm.gdm_pmat_order_cache.project_id,project_id,bigint(20) unsigned,项目id
+dsp_ps_gdm.gdm_pmat_order.project_id,project_id,bigint(20) unsigned,项目ID
+dsp_ps_gdm.gdm_goods_demand.project_id,project_id,bigint(20) unsigned,项目ID
+dsp_ps_gdm.gdm_goods_demand_cache.project_id,project_id,bigint(20) unsigned,项目id
+dsp_ps_gdm.gdm_goods_demand_cache_20180517.project_id,project_id,bigint(20) unsigned,项目id
+t8t_scm_ldm.ldm_address_send_receive.source_id,source_id,int(10) unsigned,发货单位：送货单为供应商id、退货单为项目id、销售订单和调拨单为内部仓库分组id
+t8t_scm_ldm.ldm_address_send_receive.destination_id,destination_id,int(10) unsigned,收货单位：送货单退货单和调拨单为内部仓库分组id、销售订单为项目id
